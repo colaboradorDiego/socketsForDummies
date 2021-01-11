@@ -23,6 +23,11 @@
 	github -> https://github.com/crossbario/autobahn-python
 	Install -> https://autobahn.readthedocs.io/en/latest/installation.html
 	
+	Reconection -> https://stackoverflow.com/questions/37500945/autobahn-asyncio-reconnectingclientfactory
+	
+	autobahn.twisted.websocket -> https://codesuche.com/python-examples/autobahn.twisted.websocket.connectWS/
+	autobahn.asyncio.websocket -> https://codesuche.com/python-examples/?api=autobahn.asyncio.websocket
+	
 # leer
 	-> Using a websocket client as a class in python https://stackoverflow.com/questions/26980966/using-a-websocket-client-as-a-class-in-python
 	-> IKE websocket https://www.kite.com/python/docs/websocket
