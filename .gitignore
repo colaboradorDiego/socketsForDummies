@@ -1,6 +1,8 @@
 # my excludes
 webSocket/localhost.pem
-
+webSocket/mdCliente.py
+webSocket/connCliente.py
+webSocket/webSocketApp_simpleOK_01.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

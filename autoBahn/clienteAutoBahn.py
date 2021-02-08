@@ -2,18 +2,20 @@ import asyncio
 
 from autobahn.asyncio.websocket import WebSocketClientProtocol, WebSocketClientFactory
 
-
+# protocol class
 class MyClientProtocol(WebSocketClientProtocol):
 
     def onConnect(self, response):
-        print("Server connected: {0}".format(response.peer))
+        print("onConnect - Server connected:", response)
+        print()
 
     def onConnecting(self, transport_details):
-        print("Connecting; transport details: {}".format(transport_details))
+        print("onConnecting - Connecting transport details:", transport_details)
+        print()
         return None  # ask for defaults
 
     def onOpen(self):
-        print("WebSocket connection open.")
+        print("onOpen - WebSocket connection open")
 
         def hello():
             self.sendMessage("Hello, world!".encode('utf8'))
@@ -25,12 +27,16 @@ class MyClientProtocol(WebSocketClientProtocol):
 
     def onMessage(self, payload, isBinary):
         if isBinary:
-            print("Binary message received: {0} bytes".format(len(payload)))
+            print("Binary payload message", payload)
+
         else:
-            print("Text message received: {0}".format(payload.decode('utf8')))
+            print("Text payload message", payload.decode('utf8'))
+
+        print()
 
     def onClose(self, wasClean, code, reason):
-        print("WebSocket connection closed: {0}".format(reason))
+        print("onClose -  WebSocket connection closed:", reason)
+        print()
 
 
 if __name__ == '__main__':
@@ -38,7 +44,16 @@ if __name__ == '__main__':
     factory.protocol = MyClientProtocol
 
     loop = asyncio.get_event_loop()
-    coro = loop.create_connection(factory, 'localhost', 8765)
-    loop.run_until_complete(coro)
-    loop.run_forever()
-    loop.close()
+    cliente = loop.create_connection(factory, 'localhost', 8765)
+    loop.run_until_complete(cliente)
+
+    try:
+        loop.run_forever()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        print()
+        print('closind cliente ....')
+        print()
+        cliente.close()
+        loop.close()
