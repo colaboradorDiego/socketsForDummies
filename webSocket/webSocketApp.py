@@ -40,7 +40,7 @@ def conectar():
                                 on_error=on_error,
                                 on_close=on_close)
 
-    # bound methods
+    # bound method
     ws.on_open = on_open
 
     return ws
@@ -59,15 +59,10 @@ def main(argv):
     If you want to have some other thing going ON you'll need another thread, here, enviarMsg.
     """
 
-    # Ping cada 20seg
-    heartbeat = (10000, 20000)
-    pingInterval = heartbeat[1]/1000
-    sslOpt={"cert_reqs": ssl.CERT_NONE, "check_hostname": True, "ssl_version": ssl.PROTOCOL_TLSv1}
-
     try:
         # https://www.kite.com/python/docs/websocket.WebSocketApp.run_forever
         # run_forever running on main thread
-        ws.run_forever(ping_interval=pingInterval, sslopt=sslOpt)
+        ws.run_forever()
         print('por aca solo pasa cuando salimos del loop infinito')
 
     except KeyboardInterrupt:

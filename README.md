@@ -31,15 +31,15 @@
 		
 		https://pypi.org/project/websocket_client/
 		doc's -> https://websocket-client.readthedocs.io/en/latest/
+		
+		arrancar analizando el codigo en este orden:
+		websocket\websocketApp.py -> esquema basico para cualquier app web
+		websocket\websocketSSL.py -> le ponemos seguridad y chequeos
+		websocket\websocketSuscription.py -> utilazamos stomp para suscribirnos
+		
 
 		
-		Heartbeat:
-			Cuando manejamos datos en tiempo real es nesesario que el  cliente chequee que la 
-			conexión con el servidor sigue siendo válida.
-			Por lo general el servidor ​enviará requests al cliente cada 10 seg y esperará uno de respuesta cada 20
-			seg​. En tanto que para el cliente los valores de heartbeat son enviar a lo sumo cada 20 seg 
-			esperar uno a lo sumo cada 10 seg.
-			
+		Heartbeat notas:
 			https://github.com/BitMEX/api-connectors/issues/397
 			
 		
